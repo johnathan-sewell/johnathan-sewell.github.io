@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Topic Comparison</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Colour Interpolators</h1>
+
+        <pre>
+        return d3.scale.linear()
+            .domain([-1, 1])
+            .range(['<span style="color:cadetblue">cadetblue</span>', '<span style="color:crimson">crimson</span>'])
+            .interpolate(d3.interpolateHcl);
+        </pre>
+
+        <p>HCL (Hue, Chroma, Lightness) is a color-space which improves visual perception.</p>
+
+    <script src="navigation.js"></script>
+    </body>
+</html>

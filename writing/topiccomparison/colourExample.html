@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Topic Comparison</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container" style="position:relative;width:800px;height:500px;margin:auto;border:1px solid #ccc">
+        </div>
+      </section>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery-1.10.1.min.js"><\/script>')</script>
+
+    <script src="navigation.js"></script>
+    <script src="mustache.js"></script>
+    <script src="d3.v3.min.js"></script>
+    <script src="GeometricBox.js"></script>
+    <script src="underscore-min.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            var topics = [{
+                label:'Caramel Apple',
+                difference: 1.00,
+                volume: 21
+            }, {
+                label:'apple cider',
+                difference: 0.79,
+                volume: 29
+            }, {
+                label:'apple juice',
+                difference: 0.77,
+                volume: 26
+            }, {
+                label:'Apple Cake',
+                difference: 0.71,
+                volume: 14
+            }, {
+                label:'apple pie',
+                difference: 0.62,
+                volume: 42
+            }, {
+                label:'Jony Ive',
+                difference: -0.40,
+                volume: 10
+            }, {
+                label:'Apples',
+                difference: -0.53,
+                volume: 80
+            }, {
+                label:'Mac Pro',
+                difference: -0.60,
+                volume: 15
+            }, {
+                label:'Mavericks',
+                difference: -0.60,
+                volume: 35
+            }, {
+                label:'iPad Air',
+                difference: -0.63,
+                volume: 27
+            }, {
+                label:'iOS 7',
+                difference: -0.65,
+                volume: 17
+            }, {
+                label:'Apples new',
+                difference: -0.75,
+                volume: 16
+            }, {
+                label:'OS X Mavericks',
+                difference: -0.75,
+                volume: 16
+            }, {
+                label:'Business',
+                difference: -0.85,
+                volume: 13
+            }, {
+                label:'Apple MacBook Pro',
+                difference: -0.95,
+                volume: 39
+            }, {
+                label:'Greenish',
+                difference: -0.1,
+                volume: 24
+            }, {
+                label:'Greenish',
+                difference: 0,
+                volume: 24
+            }, {
+                label:'Greenish',
+                difference: 0.1,
+                volume: 24
+            }];
+
+
+            var $container = $('.container'),
+                takenBoxes = [];
+
+            topics.forEach(function(topic) {
+                var $topic, xPosition, data, xScale, colourScale;
+
+                colourScale = d3.scale.linear()
+                    .domain([-1, 1])
+                    .range(['cadetblue', 'crimson'])
+                    .interpolate(d3.interpolateHcl);
+
+                data = {
+                    label: topic.label,
+                    colour: colourScale(topic.difference),
+                    fontSize: topic.volume
+                };
+
+                $topic = $(Mustache.render('<span class="topic" style="white-space: nowrap;position:absolute;display:block;visibility:hidden;color:{{colour}};font-size:{{fontSize}}px;" title="{{label}}">{{label}}</span>', data));
+
+                $topic.data(topic);
+                $container.append($topic);
+
+                xScale = d3.scale.linear()
+                    .domain([-1, 1])
+                    .range([0, $container.width()]);
+
+                var box = getBoxForTopic($topic, xScale, $container.height());
+
+                if(box){
+                    $topic.css({
+                        'top': box.y1 + 'px',
+                        'left': box.x1 + 'px',
+                        'visibility': 'visible'
+                    });
+                }
+            });
+
+            function getBoxForTopic($topic, xScale, containerHeight) {
+                var box,
+                    range,
+                    centralRange,
+                    outerRange;
+
+                box = makeBox($topic, xScale);
+
+                range = _.range(0, containerHeight);
+
+                //attempt to place the box in a horizontal band through the center of the container
+                centralRange = range.slice(Math.floor(0.33 * range.length), Math.floor(0.66 * range.length));
+
+                if(canPositionBoxInRange(box, centralRange, containerHeight)){
+                    return box;
+                }
+
+                //attempt to place the box in the outer range
+                outerRange = _.difference(range, centralRange);
+                if(canPositionBoxInRange(box, outerRange, containerHeight)){
+                    return box;
+                }
+                return;   //giving up
+            }
+
+            function makeBox($topic, xScale){
+                var width, height,
+                    xPosition;
+
+                width = $topic.outerWidth();
+                height = $topic.outerHeight();
+
+                xPosition = xScale($topic.data().difference);
+                xPosition = xPosition - (width * 0.5); /*shift to left by 50% for centering*/
+
+                return new GeometricBox(xPosition, 0, xPosition + width, height);
+            }
+
+            function canPositionBoxInRange(box, range, containerHeight) {
+                while (range.length > 0) {
+                    var randomIndex,
+                        candidateY,
+                        boxHeight;
+
+                    randomIndex = Math.floor(Math.random() * range.length);
+                    candidateY = range.splice(randomIndex, 1)[0];
+
+                    boxHeight = box.height();
+                    box.y1 = candidateY;
+                    box.y2 = candidateY + boxHeight;
+
+                    if (isBoxInContainer(box, containerHeight) && isClearOfTakenBoxes(box)) {
+                        takenBoxes.push(box);
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            function isBoxInContainer(box, containerHeight) {
+                var result = box.y2 <= containerHeight;
+                return result;
+            }
+
+            function isClearOfTakenBoxes(box) {
+                return takenBoxes.every(function(takenBox) {
+                    return takenBox.intersects(box) === false;
+                });
+            }
+        });
+    </script>
+
+    </body>
+</html>

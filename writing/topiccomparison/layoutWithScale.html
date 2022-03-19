@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Topic Comparison</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>d3.js scales</h1>
+
+        <p>use scales to map our <strong>domain</strong> of values (-1 to 1) to the x-axis <strong>range</strong> (800px)</p>
+        <br>
+
+        <pre>
+        var xScale = d3.scale.linear()
+            .domain([-1, 1])
+            .range([0, 800]);
+
+        xPosition = xScale(topic.difference);
+        </pre>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery-1.10.1.min.js"><\/script>')</script>
+
+    <script src="navigation.js"></script>
+    </body>
+</html>

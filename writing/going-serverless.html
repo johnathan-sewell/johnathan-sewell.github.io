@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Johnathan Sewell</title>
+
+    <link href="/style.css" rel="stylesheet">
+
+    <script async src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-84995112-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+      <h1 class="blog-header__heading"><a href="/">Hi, I'm Johnathan Sewell</a></h1>
+      <p class="blog-header__tagline">Software Engineer &amp; JavaScript Developer</p>
+  </header>
+<article>
+
+<header>
+  <h1>Creating a "Serverless" Happiness Tracking App</h1>
+  <p>
+    <time datetime="2016-10-04">4th October 2016</time>
+  </p>
+</header>
+
+  <p>
+    I had an idea <a href="http://www.nixonmcinnes.co.uk/2010/09/28/is-everybody-happy-measuring-happiness-in-the-workplace/">(not really mine at all)</a> that it'd be interesting to track how I rate my happiness at work daily. So I've started building a web app for this.
+  </p>
+
+  <p>
+    I'm going to try out the <a href="https://serverless.com/">Serverless Framework</a> and AWS.
+  </p>
+
+  <blockquote>
+    Serverless architecture replaces long-running virtual machines with ephemeral compute power that comes into existence on request and disappears immediately after use.
+    <footer>
+    <a href="https://www.thoughtworks.com/radar/techniques/serverless-architecture">ThoughtWorks Technology Radar</a>
+    </footer>
+  </blockquote>
+
+  <h2>Installing Serverless</h2>
+  <p>
+    <a href="https://serverless.com/">Serverless</a> is a Node CLI tool, just grab it off npm:
+  </p>
+
+  <pre class="code prettyprint">
+  npm install -g serverless</pre>
+
+  <p>
+    <a href="https://serverless.com/framework/docs/guide/">The introduction docs</a> are great, so I won't try to repeat them here. Basically the next steps are:
+  </p>
+
+  <ol>
+    <li>Give Serverless permission to manage your AWS resources (via AWS Identity and Access Management)</li>
+    <li>Generate a template project (serverless create --template aws-nodejs --name your-service-name)</li>
+    <li>Create Node functions - these will be run as AWS Lambda functions</li>
+    <li>Use serverless.yml to tell Serverless how to configure your AWS services</li>
+    <li>Run "serverless deploy" and let Serverless set up and deploy to your AWS services</li>
+  </ol>
+
+  <h2>Mood App</h2>
+
+  <p>
+    My mood app is a single page (app) posting new data and getting historical data via AWS API Gateway. The endpoints are:
+  </p>
+
+  <ul>
+    <li>/users/{userid}/moods - GET</li>
+    <li>/users/{userid}/moods - POST</li>
+  </ul>
+
+  <p>
+    These endpoints trigger lambda functions, which recieve the request payload, you can see Serverless created them for me in AWS:
+  </p>
+
+  <p class="wide-paragraph">
+    <img src="/images/going-serverless/lambda-functions.png" />
+  </p>
+
+  <p>
+    The Lambda functions are using DynamoDB to manage the data for the app, the complete code is below. The "event" argument contains information about the initiator of the Lambda function, in this case it's an API Gateway event (having path and body properties).
+  </p>
+
+  <pre class="code prettyprint">
+'use strict';
+const aws = require('aws-sdk');
+
+const dynamo = new aws.DynamoDB.DocumentClient();
+const tableName = 'Moods';
+
+//POST users/:userid/moods
+exports.createMood = (event, context) => {
+    const payload = {
+        TableName: tableName,
+        Item: {
+            userId: event.path.userid,
+            date: event.body.date,
+            mood: event.body.mood
+        }
+    };
+    dynamo.put(payload, (err, data) => {
+        if (err) {
+            context.fail(err);
+        } else {
+            context.succeed(data);
+        }
+    });
+};
+
+//GET users/:userid/moods
+exports.getAllMoods = (event, context) => {
+    const payload = {
+        TableName: tableName,
+        KeyConditionExpression: "userId = :userId",
+        ExpressionAttributeValues: {
+            ":userId": event.path.userid
+        }
+    };
+    dynamo.query(payload, (err, data) => {
+        if (err) {
+            context.fail(err);
+        } else {
+            context.succeed(data.Items);
+        }
+    });
+};</pre>
+
+<p>And here's my Serverless configuration:</p>
+  <pre class="code prettyprint">
+# Welcome to Serverless!
+# This file is the main config file for your service.
+service: mood-api
+provider:
+  name: aws
+  runtime: nodejs4.3
+functions:
+  createMood:
+    handler: handler.createMood
+    events:
+      - http:
+          path: users/{userid}/moods
+          method: POST
+  getMoods:
+    handler: handler.getAllMoods
+    events:
+      - http:
+          path: users/{userid}/moods
+          method: GET    </pre>
+
+<footer>
+  <h2>More</h2>
+  <ul>
+    <li>
+      <a href="http://martinfowler.com/articles/serverless.html">http://martinfowler.com/articles/serverless.html</a>
+    </li>
+    <li>
+      <a href="https://blog.codeship.com/a-serverless-rest-api-in-minutes/">https://blog.codeship.com/a-serverless-rest-api-in-minutes/</a>
+    </li>
+  </ul>
+</footer>
+
+</article>
+</body>
+</html>

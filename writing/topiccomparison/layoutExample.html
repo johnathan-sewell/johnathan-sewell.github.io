@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>Topic Comparison</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container" style="width:800px;height:500px;margin:auto;border:1px solid #ccc">
+        </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery-1.10.1.min.js"><\/script>')</script>
+
+    <script src="navigation.js"></script>
+    <script src="mustache.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            var topics = [{
+                label:'Caramel Apple',
+                difference: 1.00,
+                volume: 21
+            }, {
+                label:'apple cider',
+                difference: 0.79,
+                volume: 29
+            }, {
+                label:'apple juice',
+                difference: 0.77,
+                volume: 26
+            }, {
+                label:'Apple Cake',
+                difference: 0.71,
+                volume: 14
+            }, {
+                label:'apple pie',
+                difference: 0.62,
+                volume: 42
+            }, {
+                label:'Jony Ive',
+                difference: -0.40,
+                volume: 10
+            }, {
+                label:'Apples',
+                difference: -0.53,
+                volume: 80
+            }, {
+                label:'Mac Pro',
+                difference: -0.60,
+                volume: 15
+            }, {
+                label:'Mavericks',
+                difference: -0.60,
+                volume: 35
+            }, {
+                label:'iPad Air',
+                difference: -0.63,
+                volume: 27
+            }, {
+                label:'iOS 7',
+                difference: -0.65,
+                volume: 17
+            }, {
+                label:'Apples new',
+                difference: -0.75,
+                volume: 16
+            }, {
+                label:'OS X Mavericks',
+                difference: -0.75,
+                volume: 16
+            }, {
+                label:'Business',
+                difference: -0.85,
+                volume: 13
+            }, {
+                label:'Apple MacBook Pro',
+                difference: -0.95,
+                volume: 39
+            }];
+
+            var $container = $('.container');
+            topics.forEach(function(topic) {
+                var data = {
+                    label: topic.label,
+                    colour: '#000',
+                    fontSize: topic.volume
+                };
+
+                var $topic = $(Mustache.render('<span class="topic" style="color:{{colour}};font-size:{{fontSize}}px;" title="{{label}}">{{label}}</span>', data));
+
+                $container.append($topic);
+            });
+        });
+    </script>
+
+    </body>
+</html>
