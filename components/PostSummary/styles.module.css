@@ -21,3 +21,7 @@
 .article {
   border-top: 1px solid #e6e6e6;
 }
+a.link {
+  color: inherit;
+  text-decoration: inherit;
+}

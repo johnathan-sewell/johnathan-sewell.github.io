@@ -1,8 +1,8 @@
 import Layout from "../../Layout";
-import ArticleHeader from "../../ArticleHeader";
+import PostHeader from "../../PostHeader";
 import Header from "../../Header";
 
-export const article = {
+export const post = {
   route: "/posts/single-batch-experiment",
   title: "An Experiment in Single-Batch Working",
   isoDate: "2015-08-08",
@@ -16,7 +16,7 @@ function Post() {
       <Header />
       <Layout>
         <article>
-          <ArticleHeader article={article} />
+          <PostHeader post={post} />
 
           <p>
             In this post I talk about how using a single-batch approach for a
