@@ -26,16 +26,6 @@ This command generates static content into the `build` directory and can be serv
 
 ### Deployment
 
-Using SSH:
+A Github action will build and deploy the website to Github pages on every push to the `docusaurus` branch.
 
-```
-$ USE_SSH=true pnpm deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> pnpm deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+https://docusaurus.io/docs/deployment#deploying-to-github-pages
