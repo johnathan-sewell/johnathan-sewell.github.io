@@ -1,8 +1,7 @@
 ---
 slug: first-blog-post
 title: First Post
-authors:
-  johnathan
+authors: johnathan
 tags: [docusaurus]
 ---
 

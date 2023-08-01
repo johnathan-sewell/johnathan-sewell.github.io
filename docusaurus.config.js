@@ -1,55 +1,56 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Johnathan Sewell',
-  tagline: 'Code. Learning.',
-  favicon: 'img/favicon.ico',
+  title: "Johnathan Sewell",
+  tagline: "Code. Learning.",
+  favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: 'https://johnathan-sewell.github.io/',
+  url: "https://johnathan-sewell.github.io/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'johnathan-sewell', // Usually your GitHub org/user name.
-  projectName: 'johnathan-sewell.github.io', // Usually your repo name.
+  organizationName: "johnathan-sewell", // Usually your GitHub org/user name.
+  projectName: "johnathan-sewell.github.io", // Usually your repo name.
   trailingSlash: false,
 
-
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: false,
         blog: {
-          routeBasePath: '/', // Serve the blog at the site's root
+          routeBasePath: "/", // Serve the blog at the site's root
           showReadingTime: true,
+          blogTitle: "Johnathan Sewell",
+          exclude: ["**/drafts/**"],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
@@ -59,12 +60,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: 'My Site',
+        title: "Johnathan Sewell",
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: "",
+          src: "img/logo.svg",
         },
         // items: [
         //   {
