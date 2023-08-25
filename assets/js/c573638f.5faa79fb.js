@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[964],{8866:a=>{a.exports=JSON.parse('[{"label":"docusaurus","permalink":"/tags/docusaurus","count":2},{"label":"cdk aws","permalink":"/tags/cdk-aws","count":1},{"label":"hls.js","permalink":"/tags/hls-js","count":1},{"label":"react","permalink":"/tags/react","count":1}]')}}]);

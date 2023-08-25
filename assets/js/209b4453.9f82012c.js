@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[845],{6696:e=>{e.exports=JSON.parse('{"permalink":"/tags/docusaurus","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Johnathan Sewell"}')}}]);
