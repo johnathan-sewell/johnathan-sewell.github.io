@@ -21,24 +21,7 @@ I'm using a video player as an example here.
 
 #### Create a Vite project
 
-```bash
-pnpm create vite video-player-module --template react
-```
-
-Check that it runs locally:
-
-```bash
-cd video-player-module
-pnpm install
-pnpm run dev
-```
-
-Set the correct Node version:
-
-```bash
-echo v18.16.0 > .nvmrc
-nvm use
-```
+Foolow these steps to [setup a new Vite project](./2023-08-25-new-vite-project-setup.md)
 
 #### Install the Vite module federation plugin
 
@@ -54,17 +37,6 @@ This is so that we can point a host application here.
 "scripts": {
     "dev": "vite --port 5001 --strictPort",
 },
-```
-
-#### Housekeeping
-
-Add a .prettierrc file:
-
-```json
-{
-  "tabWidth": 2,
-  "useTabs": false
-}
 ```
 
 #### Create a VideoPlayer component
@@ -112,15 +84,16 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    basicSsl() /* local SSL */,
+    /* install for local SSL*/
+    /* pnpm add @vitejs/plugin-basic-ssl -D */
+    basicSsl(),
     federation({
       name: "video_player_module",
       // file name for the manifest file, defaults to remoteEntry.js
       filename: "remoteEntry.js",
       exposes: {
         // expose each component you want to share
-        // ./src/VideoPlayer is the path to the component
-        // ./VideoPlayer is the name of the component
+        // path to the component: name of the component
         "./VideoPlayer": "./src/VideoPlayer",
       },
       //  share react and react-dom from the host
