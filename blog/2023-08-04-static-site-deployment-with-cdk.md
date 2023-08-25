@@ -191,6 +191,15 @@ Bootstrapping is the process of provisioning resources for CDK itself, including
 
 After deployment, you should see the new Stack in the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation/home). And the new Bucket in the [AWS S3 console](https://s3.console.aws.amazon.com/s3/home).
 
+Add these to package.json:
+
+```json
+"scripts": {
+  "cdk:synth": "( cd cdk && cdk synth )",
+  "cdk:deploy": "( cd cdk && cdk deploy )",
+}
+```
+
 ## Deploy the built application files
 
 Now that we have a bucket to deploy to, we can deploy our application files.
