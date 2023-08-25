@@ -8,8 +8,7 @@ tags: [docusaurus]
 #### Set the correct Node version:
 
 ```bash
-echo v18.16.0 > .nvmrc
-nvm use
+echo 18.17.1 > .nvmrc && nvm use
 ```
 
 #### Create a new project and directory:
@@ -30,8 +29,16 @@ pnpm run dev
 
 Add a .prettierrc file:
 
+```bash
+echo {} > .prettierrc
+```
+
 ```json
-.prettierrc
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 120
+}
 ```
 
 #### PNPM
