@@ -23,9 +23,49 @@ If successful then running `cdk --version` will return a version number.
 
 ## Project setup
 
-- Create an .nvmrc file `echo 18.17.1 > .nvmrc && nvm use`
-- Create a .prettierrc file `echo {} > .prettierrc`
-- Initialise pnpm `pnpm init`
+Create an .nvmrc file
+
+```bash
+echo 18.17.1 > .nvmrc && nvm use
+```
+
+Create a .prettierrc file
+
+```bash
+echo {} > .prettierrc
+```
+
+Initialise pnpm
+
+```bash
+pnpm init
+```
+
+Add a .prettierrc file:
+
+```bash
+echo {} > .prettierrc
+```
+
+```json
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 120
+}
+```
+
+#### PNPM
+
+Only allow PNPM, in package.json:
+
+```json
+{
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  }
+}
+```
 
 ## Initialise CDK in your project
 
