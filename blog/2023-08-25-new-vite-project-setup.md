@@ -5,16 +5,17 @@ authors: johnathan
 tags: [docusaurus]
 ---
 
+#### Create a new project and directory:
+
+```bash
+pnpm create vite my-project
+cd my-project
+```
+
 #### Set the correct Node version:
 
 ```bash
 echo 18.17.1 > .nvmrc && nvm use
-```
-
-#### Create a new project and directory:
-
-```bash
-pnpm create vite my-project --template ts-react
 ```
 
 Check that it runs locally:
