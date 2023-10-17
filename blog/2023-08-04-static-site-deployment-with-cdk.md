@@ -194,6 +194,24 @@ Add these to package.json:
 }
 ```
 
+## Add a CloudFront Distribution
+
+We need to add a CloudFront distribution to serve the files from the S3 bucket.
+
+```typescript
+const distribution = new cloudfront.Distribution(
+  this,
+  `${projectName}-${config.shortEnvironment}-distribution}`,
+  {
+    defaultBehavior: {
+      origin: new cloudfrontOrigins.S3Origin(originBucket),
+    },
+    comment: `${projectName}-${config.shortEnvironment}`,
+    defaultRootObject: "index.html",
+  }
+);
+```
+
 ## Deploy the built application files
 
 Now that we have a bucket to deploy to, we can deploy our application files.
@@ -207,24 +225,8 @@ new s3Deployment.BucketDeployment(
   {
     sources: [s3Deployment.Source.asset("../dist")],
     destinationBucket: originBucket,
-  }
-);
-```
-
-## Add a CloudFront Distribution
-
-We need to add a CloudFront distribution to serve the files from the S3 bucket.
-
-```typescript
-new cloudfront.Distribution(
-  this,
-  `${projectName}-${config.shortEnvironment}-distribution}`,
-  {
-    defaultBehavior: {
-      origin: new cloudfrontOrigins.S3Origin(originBucket),
-    },
-    comment: `${projectName}-${config.shortEnvironment}`,
-    defaultRootObject: "index.html",
+    distribution,
+    distributionPaths: ["/*"], // invalidates the Cloudfront cache for all files
   }
 );
 ```
@@ -258,16 +260,7 @@ export class CdkStack extends cdk.Stack {
       }
     );
 
-    new s3Deployment.BucketDeployment(
-      this,
-      `${projectName}-${config.shortEnvironment}-s3-deployment`,
-      {
-        sources: [s3Deployment.Source.asset("../dist")],
-        destinationBucket: originBucket,
-      }
-    );
-
-    new cloudfront.Distribution(
+    const distribution = new cloudfront.Distribution(
       this,
       `${projectName}-${config.shortEnvironment}-distribution}`,
       {
@@ -276,6 +269,17 @@ export class CdkStack extends cdk.Stack {
         },
         comment: `${projectName}-${config.shortEnvironment}`,
         defaultRootObject: "index.html",
+      }
+    );
+
+    new s3Deployment.BucketDeployment(
+      this,
+      `${projectName}-${config.shortEnvironment}-s3-deployment`,
+      {
+        sources: [s3Deployment.Source.asset("../dist")],
+        destinationBucket: originBucket,
+        distribution,
+        distributionPaths: ["/*"], // invalidates the Cloudfront cache for all files
       }
     );
   }
