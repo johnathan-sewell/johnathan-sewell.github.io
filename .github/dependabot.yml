@@ -1,0 +1,13 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    registries: "*"
+    directory: "/"
+    open-pull-requests-limit: 5
+    schedule:
+      interval: "daily"
+    ignore:
+      # ignore all patch updates
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
