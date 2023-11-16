@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - docusaurus
+      - main
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
@@ -18,7 +18,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-          
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
