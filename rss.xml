@@ -4,10 +4,19 @@
         <title>Johnathan Sewell Blog</title>
         <link>https://johnathan-sewell.github.io/</link>
         <description>Johnathan Sewell Blog</description>
-        <lastBuildDate>Fri, 25 Aug 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 20 Nov 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Intersection Observer for Simple Transitions]]></title>
+            <link>https://johnathan-sewell.github.io/intersection-observer-transitions</link>
+            <guid>https://johnathan-sewell.github.io/intersection-observer-transitions</guid>
+            <pubDate>Mon, 20 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Intersection Observer for Simple Transition]]></description>
+            <content:encoded><![CDATA[<h3 class="anchor anchorWithStickyNavbar_FJPA" id="intersection-observer-for-simple-transition">Intersection Observer for Simple Transition<a href="#intersection-observer-for-simple-transition" class="hash-link" aria-label="Direct link to Intersection Observer for Simple Transition" title="Direct link to Intersection Observer for Simple Transition">​</a></h3><p><img loading="lazy" alt="End result" src="/assets/images/scroll-transition-e4cb3a16045ec627ec61b31327a42f5d.gif" width="1528" height="1186" class="img_mf7_"></p>]]></content:encoded>
+            <category>intersection observer</category>
+        </item>
         <item>
             <title><![CDATA[Vite Project Setup]]></title>
             <link>https://johnathan-sewell.github.io/vite-project-setup</link>

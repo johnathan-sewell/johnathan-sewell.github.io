@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://johnathan-sewell.github.io/</id>
     <title>Johnathan Sewell Blog</title>
-    <updated>2023-08-25T00:00:00.000Z</updated>
+    <updated>2023-11-20T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://johnathan-sewell.github.io/"/>
     <subtitle>Johnathan Sewell Blog</subtitle>
     <icon>https://johnathan-sewell.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Intersection Observer for Simple Transitions]]></title>
+        <id>https://johnathan-sewell.github.io/intersection-observer-transitions</id>
+        <link href="https://johnathan-sewell.github.io/intersection-observer-transitions"/>
+        <updated>2023-11-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Intersection Observer for Simple Transition]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_FJPA" id="intersection-observer-for-simple-transition">Intersection Observer for Simple Transition<a href="#intersection-observer-for-simple-transition" class="hash-link" aria-label="Direct link to Intersection Observer for Simple Transition" title="Direct link to Intersection Observer for Simple Transition">​</a></h3><p><img loading="lazy" alt="End result" src="/assets/images/scroll-transition-e4cb3a16045ec627ec61b31327a42f5d.gif" width="1528" height="1186" class="img_mf7_"></p>]]></content>
+        <author>
+            <name>Johnathan Sewell</name>
+            <uri>https://github.com/johnathan-sewell</uri>
+        </author>
+        <category label="intersection observer" term="intersection observer"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Vite Project Setup]]></title>
         <id>https://johnathan-sewell.github.io/vite-project-setup</id>
