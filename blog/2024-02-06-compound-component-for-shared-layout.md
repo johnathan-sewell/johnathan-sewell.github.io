@@ -47,15 +47,22 @@ Layout2Columns.Content = Content;
 Layout2Columns.SideBar = SideBar;
 ```
 
-The external user can use this component like this:
+The external user can use this component as below. Notice how the Footer component is conditionally rendered based on the screen size.
+
+Without this pattern the Footer would have had to be rendered inside the Layout components, and changing that behaviour would require passing in a configuration prop.
+
+This is a powerful feature of the Compound Component pattern.
 
 ```tsx
 <Layout2Columns>
   <Layout2Columns.Content>
     <p>Content</p>
+    <Footer className="hidden bg-transparent md:block" />
   </Layout2Columns.Content>
+
   <Layout2Columns.SideBar>
-    <p>SideBar</p>
+    <p>Sidebar</p>
   </Layout2Columns.SideBar>
+  <Footer className="block bg-transparent md:hidden" />
 </Layout2Columns>
 ```
