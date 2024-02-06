@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[318],{9805:e=>{e.exports=JSON.parse('{"label":"react compound-components","permalink":"/tags/react-compound-components","allTagsPath":"/tags","count":1}')}}]);
