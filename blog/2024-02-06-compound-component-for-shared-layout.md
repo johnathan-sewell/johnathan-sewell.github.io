@@ -2,7 +2,7 @@
 slug: compound-component-for-shared-layout
 title: React Compound Component for shared layout
 authors: johnathan
-tags: [react compound-components]
+tags: [react, compound-components]
 ---
 
 ### React Compound Component for shared layout
