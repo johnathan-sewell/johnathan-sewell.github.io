@@ -18,7 +18,8 @@
             <name>Johnathan Sewell</name>
             <uri>https://github.com/johnathan-sewell</uri>
         </author>
-        <category label="react compound-components" term="react compound-components"/>
+        <category label="react" term="react"/>
+        <category label="compound-components" term="compound-components"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Intersection Observer for Simple Transitions]]></title>
