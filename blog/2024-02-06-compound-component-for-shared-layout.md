@@ -1,11 +1,11 @@
 ---
-slug: compound-component-for-shared-layout
-title: React Compound Component for shared layout
+slug: compound-component
+title: React Compound Component Pattern
 authors: johnathan
 tags: [react, compound-components]
 ---
 
-### React Compound Component for shared layout
+### React Compound Component Pattern
 
 #### The Compound Component Pattern
 
@@ -47,11 +47,7 @@ Layout2Columns.Content = Content;
 Layout2Columns.SideBar = SideBar;
 ```
 
-The external user can use this component as below. Notice how the Footer component is conditionally rendered based on the screen size.
-
-Without this pattern the Footer would have had to be rendered inside the Layout components, and changing that behaviour would require passing in a configuration prop.
-
-This is a powerful feature of the Compound Component pattern.
+The external user can use this component as below. Without this pattern changing behaviour might require passing extra props.
 
 ```tsx
 <Layout2Columns>
