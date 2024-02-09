@@ -34,7 +34,7 @@ export function Timeline() {
 }
 ```
 
-<video autoplay muted controls src="/video/using-intersection-observer-scroll-shadows/1.webm"></video>
+Link to video: [Simple component without scroll shadows](/video/using-intersection-observer-scroll-shadows/1.webm)
 
 And with the Intersection Observer API we can create a shadow effect when the component is scrolled.
 
@@ -163,4 +163,4 @@ export const useScrollObservers = () => {
 };
 ```
 
-<video autoplay muted controls src="/video/using-intersection-observer-scroll-shadows/2.webm">
+Link to video: [Component with scroll shadows](/video/using-intersection-observer-scroll-shadows/2.webm)
