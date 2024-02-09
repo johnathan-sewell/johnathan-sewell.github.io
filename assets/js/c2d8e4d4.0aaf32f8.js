@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[534],{9031:e=>{e.exports=JSON.parse('{"label":"intersection observer","permalink":"/tags/intersection-observer","allTagsPath":"/tags","count":1}')}}]);

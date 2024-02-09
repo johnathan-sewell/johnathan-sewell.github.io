@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[203],{4837:e=>{e.exports=JSON.parse('{"permalink":"/tags/react","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Johnathan Sewell"}')}}]);
