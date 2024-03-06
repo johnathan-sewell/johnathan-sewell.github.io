@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[854],{2404:a=>{a.exports=JSON.parse('{"label":"cdk aws","permalink":"/tags/cdk-aws","allTagsPath":"/tags","count":1}')}}]);

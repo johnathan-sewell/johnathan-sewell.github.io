@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[6432],{4219:a=>{a.exports=JSON.parse('{"label":"tanstack query","permalink":"/tags/tanstack-query","allTagsPath":"/tags","count":1}')}}]);

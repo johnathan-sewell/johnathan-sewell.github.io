@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[3025],{3729:e=>{e.exports=JSON.parse('{"permalink":"/tags/tanstack-query","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Johnathan Sewell"}')}}]);
