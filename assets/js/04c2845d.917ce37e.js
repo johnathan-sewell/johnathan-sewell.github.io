@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[4673],{8052:a=>{a.exports=JSON.parse('{"label":"axios","permalink":"/tags/axios","allTagsPath":"/tags","count":1}')}}]);

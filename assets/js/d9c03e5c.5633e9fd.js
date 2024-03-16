@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[6447],{9174:a=>{a.exports=JSON.parse('{"label":"react","permalink":"/tags/react","allTagsPath":"/tags","count":4}')}}]);
