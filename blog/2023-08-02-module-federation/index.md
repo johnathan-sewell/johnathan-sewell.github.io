@@ -24,7 +24,7 @@ I'm using a video player as an example here.
 
 #### Create a Vite project
 
-Foolow these steps to [setup a new Vite project](./2023-08-25-new-vite-project-setup.md)
+Follow these steps to [setup a new Vite project](../2023-08-25-new-vite-project-setup/index.md)
 
 #### Install the Vite module federation plugin
 
