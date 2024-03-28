@@ -17,7 +17,7 @@ cd my-project
 #### Set the correct Node version:
 
 ```bash
-echo 18.17.1 > .nvmrc && nvm use
+echo lts/* > .nvmrc && nvm use
 ```
 
 Check that it runs locally:
