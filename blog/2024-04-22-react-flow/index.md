@@ -1,7 +1,7 @@
 ---
 slug: react-flow
 title: React Flow for Elimination Brackets
-authors: Johnathan
+authors: johnathan
 ---
 
 Using React Flow to create a somewhat dynamic elimination bracket for a tournament.
@@ -206,3 +206,20 @@ export function FlowTest() {
 }
 
 ```
+
+## Adding edges to connect the nodes
+
+```ts
+const edges = double_elim_8_finished?.matches
+  ?.filter((match) => match.winnerGoesTo?.seriesUUID)
+  .map((match) => ({
+    id: `edge-${match.uuid}`,
+    source: match.uuid,
+    target: match.winnerGoesTo!.seriesUUID,
+  }));
+```
+
+
+![Edges connecting the nodes](edges.png)
+
+
