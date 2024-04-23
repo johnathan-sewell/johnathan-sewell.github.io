@@ -4,7 +4,7 @@ title: React Flow for Elimination Brackets
 authors: johnathan
 ---
 
-Using React Flow to create a somewhat dynamic elimination bracket for a tournament.
+Using React Flow to create a somewhat dynamic elimination bracket for a Dota 2 tournament. I need to layout the bracket to match some design very closely, so I need to be able to hard-code the positions of the nodes, but connect them automatically. I also need to animate the edges to highlight the winning path a team has taken.
 
 <!-- truncate -->
 
@@ -194,8 +194,6 @@ export function FlowTest() {
           style={{
             width: "1075px",
             height: "720px",
-            minWidth: "1075px",
-            minHeight: "600px",
           }}
         >
           <ReactFlow nodeTypes={nodeTypes} nodes={initialNodes} edges={initialEdges} />
@@ -218,8 +216,78 @@ const edges = double_elim_8_finished?.matches
     target: match.winnerGoesTo!.seriesUUID,
   }));
 ```
-
-
 ![Edges connecting the nodes](edges.png)
 
 
+## Add corners to the edges
+
+Add a `type: "smoothstep"` to the edge object to add corners to the edges. See [https://reactflow.dev/examples/edges/edge-types](React Flow Edge Types)
+
+
+## Animating the winning path of a team
+
+When hovering on a team we want to show the how that team has moved through the bracket. We can do this by setting the active team id in the state and updating the edges to be animated if the team has won the match the edge is coming from. We also change the color of the edge to yellow if it is animated.
+
+```ts
+const [activeTeamId, setActiveTeamId] = useState<string>();
+
+  const nodes = useMemo(
+    () =>
+      matches?.map((match) => ({
+        id: match.uuid,
+        type: "match",
+        position: matchIndexPositions[match.index].node,
+        data: { match, activeTeamId, onTeamHover: setActiveTeamId },
+      })),
+    [matches, activeTeamId, matchIndexPositions],
+  );
+
+  const edges = useMemo(
+    () =>
+      matches
+        ?.filter((match) => match.winnerGoesTo?.seriesUUID) // filter out grand final (no next match so so edge needed)
+        .map((match) => {
+          const animated =
+            activeTeamId === undefined
+              ? false
+              : match.teamA?.isEliminated
+                ? match.teamB?.uuid === activeTeamId
+                : match.teamA?.uuid === activeTeamId;
+
+          return {
+            id: `edge-${match.uuid}`,
+            type: "smoothstep",
+            source: match.uuid,
+            target: match.winnerGoesTo!.seriesUUID,
+            animated,
+            zIndex: animated ? 10 : 0,
+            style: {
+              stroke: activeTeamId ? (animated ? "#fffe3e" : "#8D858C") : "#D2CED1",
+            },
+          };
+        }),
+    [matches, activeTeamId],
+  );
+```
+
+![Animated edges](animate.png)
+
+
+## Configuring additional behaviours
+
+React Flow comes with a lot of built-in behaviours that can be configured. For example, we can disable the ability to zoom in and out, pan on drag, select elements, and prevent scrolling.
+
+```ts
+<ReactFlow
+  nodeTypes={nodeTypes}
+  nodes={nodes}
+  edges={edges}
+  panOnDrag={false}
+  zoomOnScroll={false}
+  elementsSelectable={false}
+  preventScrolling={false}
+  proOptions={{
+    hideAttribution: true,
+  }}
+/>
+```
