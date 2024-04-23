@@ -282,9 +282,14 @@ React Flow comes with a lot of built-in behaviours that can be configured. For e
   nodeTypes={nodeTypes}
   nodes={nodes}
   edges={edges}
-  panOnDrag={false}
-  zoomOnScroll={false}
+  // prevent selecting nodes
   elementsSelectable={false}
+  // prevent zooming
+  zoomOnScroll={false}
+  zoomOnDoubleClick={false}
+  zoomOnPinch={false}
+  // prevent panning & scrolling
+  panOnDrag={false}
   preventScrolling={false}
   proOptions={{
     hideAttribution: true,
