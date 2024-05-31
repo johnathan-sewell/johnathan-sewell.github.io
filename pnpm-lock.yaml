@@ -32,8 +32,8 @@ devDependencies:
     specifier: 3.1.1
     version: 3.1.1(react-dom@18.2.0)(react@18.2.0)
   '@docusaurus/tsconfig':
-    specifier: 3.1.1
-    version: 3.1.1
+    specifier: 3.4.0
+    version: 3.4.0
   '@docusaurus/types':
     specifier: 3.1.1
     version: 3.1.1(react-dom@18.2.0)(react@18.2.0)
@@ -2238,8 +2238,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@docusaurus/tsconfig@3.1.1:
-    resolution: {integrity: sha512-FTBuY3KvaHfMVBgvlPmDQ+KS9Q/bYtVftq2ugou3PgBDJoQmw2aUZ4Sg15HKqLGbfIkxoy9t6cqE4Yw1Ta8Q1A==}
+  /@docusaurus/tsconfig@3.4.0:
+    resolution: {integrity: sha512-0qENiJ+TRaeTzcg4olrnh0BQ7eCxTgbYWBnWUeQDc84UYkt/T3pDNnm3SiQkqPb+YQ1qtYFlC0RriAElclo8Dg==}
     dev: true
 
   /@docusaurus/types@3.1.1(react-dom@18.2.0)(react@18.2.0):
