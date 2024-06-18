@@ -2,6 +2,9 @@
 slug: react-flow
 title: React Flow for Elimination Brackets
 authors: johnathan
+tags:
+  - react
+  - react-flow
 ---
 
 Using React Flow to create a somewhat dynamic elimination bracket for a Dota 2 tournament. I need to layout the bracket to match some design very closely, so I need to be able to hard-code the positions of the nodes, but connect them automatically. I also need to animate the edges to highlight the winning path a team has taken.

@@ -2,6 +2,9 @@
 slug: intersection-observer-transitions
 title: Intersection Observer for Simple Transitions
 authors: johnathan
+tags:
+  - react
+  - intersection-observer
 ---
 
 Using the Intersection Observer API to trigger transitions.

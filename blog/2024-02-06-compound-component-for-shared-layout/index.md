@@ -2,6 +2,10 @@
 slug: compound-component
 title: React Compound Component Pattern
 authors: johnathan
+tags:
+  - react
+  - compound-component
+  - patterns
 ---
 
 The Compound Component pattern in React.

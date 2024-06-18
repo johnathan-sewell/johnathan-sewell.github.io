@@ -36,13 +36,15 @@ const config: Config = {
       {
         
         docs: false,
+        // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog#ex-config
         blog: {
           routeBasePath: '/',
           showReadingTime: true,
           blogTitle: 'Developer Journal',
           blogDescription: 'A blog about software development and other things.',
           postsPerPage: 'ALL',
-          blogSidebarCount: 0
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
         },
         theme: {
           customCss: './src/css/custom.css',

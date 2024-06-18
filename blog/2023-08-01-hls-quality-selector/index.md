@@ -2,6 +2,10 @@
 slug: hls-quality-selector
 title: Building a Quality Selector for HLS.js in React
 authors: johnathan
+tags:
+  - react
+  - hls
+  - video
 ---
 
 Building an HLS.js video player quality selector in React.

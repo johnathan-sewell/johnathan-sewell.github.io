@@ -2,6 +2,10 @@
 slug: logging-frontend-api-layer
 title: Logging in the Frontend API layer
 authors: johnathan
+tags:
+  - react
+  - axios
+  - error-handling
 ---
 
 Logging frontend errors when using Axios and TanStack Query.

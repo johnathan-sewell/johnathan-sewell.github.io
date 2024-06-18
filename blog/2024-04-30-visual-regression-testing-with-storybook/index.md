@@ -2,6 +2,11 @@
 slug: visual-regression-testing-with-storybook
 title: Visual Regression Testing with Storybook
 authors: johnathan
+tags:
+  - storybook
+  - playwright
+  - visual-regression-testing
+  - mock-service-worker
 ---
 
 Playwright can take screenshots of a webpage which form the basis of visual regression testing and detect regressions. Storybook gives us a way to view components in isolation and test them in different states. By combining the two we can create a visual regression testing suite that can be run on every commit to ensure that changes to components do not introduce visual bugs.

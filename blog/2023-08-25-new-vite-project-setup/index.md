@@ -2,6 +2,11 @@
 slug: vite-project-setup
 title: Vite Project Setup
 authors: johnathan
+tags:
+  - vite
+  - pnpm
+  - prettier
+  - commitizen
 ---
 
 My preferred setup for a new Vite project.

@@ -2,6 +2,9 @@
 slug: using-intersection-observer-scroll-shadows
 title: Using Intersection Observer to Create Scroll Shadows
 authors: johnathan
+tags:
+  - react
+  - intersection-observer
 ---
 
 Using the Intersection Observer API to create scroll shadows.

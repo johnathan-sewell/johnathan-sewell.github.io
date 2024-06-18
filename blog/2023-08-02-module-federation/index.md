@@ -2,6 +2,10 @@
 slug: module-federation
 title: Module Federation
 authors: johnathan
+tags:
+  - vite
+  - module-federation
+  - react
 ---
 
 Sharing code between applications with Module Federation.

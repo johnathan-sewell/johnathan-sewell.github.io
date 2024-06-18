@@ -2,6 +2,10 @@
 slug: static-site-deployment-with-cdk
 title: Simple Static Site Deployment to AWS with CDK
 authors: johnathan
+tags:
+  - infrastructure as code
+  - aws
+  - cdk
 ---
 
 Deploy a static site to AWS with CDK.
