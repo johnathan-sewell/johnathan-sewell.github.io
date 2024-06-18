@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjohnathan_sewell=self.webpackChunkjohnathan_sewell||[]).push([[434],{6119:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/","page":1,"postsPerPage":9,"totalPages":1,"totalCount":9,"blogDescription":"A blog about software development and other things.","blogTitle":"Developer Journal"}}')}}]);
