@@ -308,7 +308,7 @@ Package scripts to build and run the Docker container:
 The tests can be run automatically on every PR using GitHub Actions. The following workflow file will run the tests and post the results to a Slack channel.
 
 ```yaml
-# .github/workflows/vrt.yml
+# .github/workflows/visual-regression-tests.yml
 
 name: Playwright Visual Regression Tests
 on:
@@ -382,4 +382,18 @@ jobs:
 
 ```
 
+This will:
+* build the Storybook static files
+* build the Docker image
+* run the tests
+* upload the test results as an artifact to the GitHub Actions page
+* post the results to a Slack channel
 
+
+## Add status badges to your README
+
+```markdown
+[![Playwright Visual Regression Tests](https://github.com/myrepo/actions/workflows/visual-regression-tests.yaml/badge.svg?branch=main)](https://github.com/blastorg/portal-frontend/actions/workflows/visual-regression-tests.yaml)
+
+[![Run Workflow -  Update Visual Regression Test Snapshots](https://img.shields.io/badge/Trigger%20workflow%20-%20Update%20Visual%20Regression%20Test%20Snapshots-blue?style=for-the-badge)](https://github.com/myrepo/actions/workflows/visual-regression-tests.yaml)
+```
