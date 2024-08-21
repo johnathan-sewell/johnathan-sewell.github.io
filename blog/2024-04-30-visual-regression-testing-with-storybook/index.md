@@ -397,3 +397,17 @@ This will:
 
 [![Run Workflow -  Update Visual Regression Test Snapshots](https://img.shields.io/badge/Trigger%20workflow%20-%20Update%20Visual%20Regression%20Test%20Snapshots-blue?style=for-the-badge)](https://github.com/myrepo/actions/workflows/visual-regression-tests.yaml)
 ```
+
+
+## Pull Request Experience
+
+Github provides a visual diff tools on Pull Requests. We can see the visual changes to screenshots in PRs.
+
+"Onion Skin" is a feature that merges the two images with opacity changes.
+![onion-skin](onion-skin.png)
+
+"Swipe" allows you to swipe between the two images.
+![swipe](swipe.png)
+
+"2-Up" shows the two images side by side.
+![two-up.png](two-up.png)
