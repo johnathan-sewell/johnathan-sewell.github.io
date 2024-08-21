@@ -13,6 +13,9 @@ Playwright can take screenshots of a webpage which form the basis of visual regr
 
 <!-- truncate -->
 
+I have Storybook set up in my project already. I'm using MSW to mock API requests in Storybook files that rely on data from our APIs. This is optional, and you can skip this step if you want to test simple UI components and don't need to mock API requests.
+
+
 ## Setting up MSW in Storybook
 
 Install MSW from https://mswjs.io/docs/getting-started/install
@@ -123,7 +126,7 @@ export const BracketsTeamsPrizes: Story = {
 
       return (
         <ReactQueryClient>
-          <ApiProvider ddsDisabled>
+          <ApiProvider>
             <AuthModalProvider>
               <AuthProvider>
                 <MemoryRouter initialEntries={["/dota/tournaments/dacha-dubai-2024"]}>
@@ -263,18 +266,120 @@ export async function loadStory(page: Playwright.Page, storyId: string) {
 
 To run the tests manually, run the Playwright tests with `pnpm playwright test`. This will start the Storybook server, run the tests, and save the screenshots in the `__screenshots__` directory. The images can be committed to the repository and used as reference images for future tests.
 
-When changing Playwright configuration, it's useful to clean-up existing screenshots with `pnpm test:vrt:remove-screenshots`.
-
+I use the following scripts in my package.json file to run the tests:
 
 ```json
 // package.json
 {
   "scripts": {
-    "test:vrt": "pnpm playwright test --update-snapshots",
-    "test:vrt:remove-screenshots": "find src -type d -name '__screenshots__' -exec rm -rf {} +",
+    "test:vrt": "pnpm playwright test",
+    "test:vrt:update": "pnpm playwright test --update-snapshots",
+    "test:vrt:remove-screenshots": "find src -type d -name '__screenshots__' -exec rm -rf {} +",  // just in case you need to remove all the screenshots
   }
 }
 ```
 
 ## Automating the Workflow
+
+I'm using Docker to run the tests in a container. This ensures that the tests run in a consistent environment and that the tests are isolated from the host machine.
+
+```Dockerfile
+# Use the Playwright image with the specified version
+FROM mcr.microsoft.com/playwright:v1.43.0-jammy
+
+# Set the working directory to /work/
+WORKDIR /work/
+
+# Install pnpm
+RUN npm i -g pnpm
+```
+
+Package scripts to build and run the Docker container:
+
+```json
+"docker:build:vrt": "docker build . -t playwright-tests",
+"docker:run:vrt": "docker run --rm -v $(pwd):/work/ playwright-tests",
+"test:vrt": "storybook build --test && pnpm docker:build:vrt && pnpm docker:run:vrt pnpm exec playwright test",
+"test:vrt:update": "storybook build --test && pnpm docker:build:vrt && pnpm docker:run:vrt pnpm exec playwright test --update-snapshots",
+```
+
+### GitHub Actions
+
+The tests can be run automatically on every PR using GitHub Actions. The following workflow file will run the tests and post the results to a Slack channel.
+
+```yaml
+# .github/workflows/vrt.yml
+
+name: Playwright Visual Regression Tests
+on:
+  workflow_dispatch:
+  pull_request:
+ 
+jobs:
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Add GH package repository
+        run: |
+          echo "@blastorg:registry = https://npm.pkg.github.com" > ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.TOKEN }} " >> ~/.npmrc
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Storybook
+        run: pnpm exec storybook build
+
+      - name: Build docker image
+        run: pnpm docker:build:vrt
+
+      - name: Run tests
+        run: pnpm docker:run:vrt pnpm exec playwright test
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.26.0
+        if: ${{ !cancelled() }}
+        with:
+          # For posting a rich message using Block Kit
+          payload: |
+            {
+              "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL}}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+```
+
 
