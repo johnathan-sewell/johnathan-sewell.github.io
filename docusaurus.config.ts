@@ -34,7 +34,7 @@ const config: Config = {
     [
       "classic",
       {
-        googleAnalytics: {
+        gtag: {
           trackingID: "G-WYHQ8V99F6",
         },
         docs: false,

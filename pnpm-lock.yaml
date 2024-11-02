@@ -11,7 +11,7 @@ importers:
       '@docusaurus/core':
         specifier: 3.5.2
         version: 3.5.2(@docusaurus/types@3.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mdx-js/react@3.1.0(@types/react@18.3.3)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)
-      '@docusaurus/plugin-google-tag-manager':
+      '@docusaurus/plugin-google-gtag':
         specifier: ^3.5.2
         version: 3.5.2(@mdx-js/react@3.1.0(@types/react@18.3.3)(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)
       '@docusaurus/preset-classic':
