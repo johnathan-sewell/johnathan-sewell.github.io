@@ -33,7 +33,6 @@ article header h1 {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-size: 32px !important;
   font-weight: 700;
-  height: 36px;
   line-height: 36px;
 }
 article header h2 {
@@ -41,7 +40,6 @@ article header h2 {
   font-size: 1.5rem !important;
   font-size: 19px;
   font-weight: 700;
-  height: 26px;
   line-height: 26px;
 }
 
