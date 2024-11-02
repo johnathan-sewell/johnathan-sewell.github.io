@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: "Developer Journal",
-  tagline: "Johnathan Sewell",
+  title: "Johnathan Sewell",
+  tagline: "Developer Journal",
   
   favicon: 'img/favicon.ico',
 
@@ -34,7 +34,9 @@ const config: Config = {
     [
       'classic',
       {
-        
+        googleAnalytics: {
+          trackingID: "G-WYHQ8V99F6"
+        },
         docs: false,
         // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog#ex-config
         blog: {
@@ -54,15 +56,9 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    
     navbar: {
-      title: 'Developer Journal',
-    },
-    
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      title: 'Johnathan Sewell',
+      style: 'dark',
     },
   } satisfies Preset.ThemeConfig,
 };
