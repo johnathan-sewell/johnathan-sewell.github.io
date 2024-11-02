@@ -18,7 +18,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #ffffff;
   --ifm-color-primary-dark: #e6e6e6;
   --ifm-color-primary-darker: #d9d9d9;
@@ -46,5 +46,5 @@ article header h2 {
 }
 
 .navbar__brand:hover {
-  color: #fff;  
+  color: #fff;
 }
