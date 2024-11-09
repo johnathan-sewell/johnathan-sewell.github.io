@@ -1,11 +1,9 @@
-import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "Johnathan Sewell",
   tagline: "Developer Journal",
-
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -32,7 +30,7 @@ const config: Config = {
 
   presets: [
     [
-      "classic",
+      "@docusaurus/preset-classic",
       {
         gtag: {
           trackingID: "G-WYHQ8V99F6",
@@ -60,6 +58,19 @@ const config: Config = {
     navbar: {
       title: "Johnathan Sewell",
       style: "dark",
+      items: [
+        { to: "/tags", label: "Tags", position: "left" },
+        {
+          href: "https://github.com/johnathan-sewell",
+          label: "GitHub",
+          position: "right",
+        },
+        {
+          href: "https://www.linkedin.com/in/johnathan-sewell/",
+          label: "LinkedIn",
+          position: "right",
+        },
+      ],
     },
   } satisfies Preset.ThemeConfig,
 };
