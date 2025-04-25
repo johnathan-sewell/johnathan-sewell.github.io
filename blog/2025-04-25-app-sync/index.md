@@ -1,6 +1,6 @@
 ---
 slug: app-sync
-title: App Sync
+title: AWS App Sync Events for a Realtime Chat system
 authors: johnathan
 tags:
   - AWS
